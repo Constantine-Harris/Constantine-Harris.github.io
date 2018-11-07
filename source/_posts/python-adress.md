@@ -14,4 +14,5 @@ class Student(object):
     def print_score(self):
         print('%s: %s' % (self.name, self.score))
 ```
-```![post-cover](https://raw.githubusercontent.com/Constantine-Harris/Constantine-Harris.github.io/hexo/themes/hexo-theme-Claudia/blackman.png "post-cover")
+
+![post-cover](https://raw.githubusercontent.com/Constantine-Harris/Constantine-Harris.github.io/hexo/themes/hexo-theme-Claudia/blackman.png "post-cover")
