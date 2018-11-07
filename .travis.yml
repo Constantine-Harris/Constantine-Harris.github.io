@@ -9,7 +9,7 @@ script:
 
 after_script:
   - cd ./public
-  - echo "" > CNAME
+  - echo "genleak.com" > CNAME
   - cp ../404.html .
   - git init
   - git config user.name "Constantine-Harris"
