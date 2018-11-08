@@ -18,7 +18,7 @@
     "direction":
         "内容包括：Web框架、网络爬虫、网络内容提取、模板引擎、数据库、数据可视化、图片处理、文本处理、自然语言处理、机器学习、日志、代码分析等"
   }
-   "linux安装ssr": {
+   "linux安装ssr":{
     "title": "linux安装GUI的ssr客户端",
     "subTitle": "",
     "img_link": "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=550914927,3739490630&fm=27&gp=0.jpg",
