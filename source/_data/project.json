@@ -1,21 +1,21 @@
 {
-  "Apple ¹ÙÍøÁÙÄ¡": {
-    "title": "Apple ¹ÙÍøÁÙÄ¡",
-    "subTitle": "¸ù¾İÃÀ°æapple¹ÙÍøÁÙÄ¡",
-    "img_link": "http://o7bkkhiex.bkt.clouddn.com/item-apple.jpg",
+  "ä¸€ç‚¹å¾®å°çš„è´¡çŒ®": {
+    "title": "ä¸€ç‚¹å¾®å°çš„è´¡çŒ®",
+    "subTitle": "ä¸€ç‚¹å¾®å°çš„è´¡çŒ®",
+    "img_link": "http://img2.imgtn.bdimg.com/it/u=365564779,2931890653&fm=26&gp=0.jpg",
     "use" : ["jQuery"],
-    "link": "http://haojen.github.io/apple-linmo/",
-    "data":"2016.3",
-    "direction": "ÁÙÄ¡ 2016 ÄêÈıÔÂ·İ Apple ÃÀ°æµ¥Ò³Ãæ¡£"
+    "link": "genleak.com",
+    "data":"2018.11",
+    "direction": "å•¥ä¹Ÿä¸ä¼šã€‚"
   },
-   "Anisina (°¢ÄáË¿ÄÈ)": {
-    "title": "Anisina",
-    "subTitle": "»ùÓÚ Hexo ÖÆ×÷µÄ¸öÈË²©¿ÍÖ÷Ìâ",
-    "img_link": "http://o7bkkhiex.bkt.clouddn.com/Anisina.png",
+   "New fish": {
+    "title": "New fish",
+    "subTitle": "New fish",
+    "img_link": "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=550914927,3739490630&fm=27&gp=0.jpg",
     "use" : ["jQuery","Bootstrap","Node.js","EJS","Hexo","SASS"],
-    "link": "http://haojen.github.io/",
-    "data": "2016.5",
+    "link": "https://github.com/Constantine-Harris",
+    "data": "2018.11",
     "direction":
-        "Hexo ÊÇÄ³Î»Ì¨ÍåÓÑÈË»ùÓÚ Node.js ±àĞ´µÄ²©¿Í¿ò¼Ü"
+        "çŒ«å”å¸®æˆ‘æ­å»ºçš„"
   }
 }
