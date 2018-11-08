@@ -15,8 +15,7 @@
     "use" : ["python进阶","python",],
     "link": "https://github.com/boy-hack/awesome-python-cn ",
     "data": "2018.11",
-    "direction":
-        "内容包括：Web框架、网络爬虫、网络内容提取、模板引擎、数据库、数据可视化、图片处理、文本处理、自然语言处理、机器学习、日志、代码分析等"
+    "direction": "内容包括：Web框架、网络爬虫、网络内容提取、模板引擎、数据库、数据可视化、图片处理、文本处理、自然语言处理、机器学习、日志、代码分析等"
   },
    "linux安装ssr": {
     "title": "linux安装GUI的ssr客户端",
@@ -25,7 +24,6 @@
     "use" : ["ssr-gui","Linux-ssr","ssr","linux"],
     "link": "https://github.com/erguotou520/electron-ssr/",
     "data": "2018.11",
-    "direction":
-        "只需要系统已安装 python 可正常执行shadowsocksr的python版即可"
+    "direction": "只需要系统已安装 python 可正常执行shadowsocksr的python版即可"
   }
 }
