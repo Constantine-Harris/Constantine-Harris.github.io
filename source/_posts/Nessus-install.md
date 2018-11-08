@@ -1,11 +1,11 @@
 ---
-title: python地址
+title: kali安装Nessus
 date: 2018/11/07 20:20:00
 tags: 
-- python入门手册
-- 廖雪峰python
-Categories: 
-- python入门手册
+- Nessus
+- web渗透工具
+categories: 
+- web渗透工具
 ---
 
 ## 实验环境
