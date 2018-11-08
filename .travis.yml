@@ -11,6 +11,7 @@ after_script:
   - cd ./public
   - echo "genleak.com" > CNAME
   - cp ../404.html .
+  - cp -R ../images .
   - git init
   - git config user.name "Constantine-Harris"
   - git config user.email "admin@admin.com"
