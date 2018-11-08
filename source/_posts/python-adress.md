@@ -1,7 +1,7 @@
 ---
 title: python地址
 date: 2018/11/07 20:20:00
-tag python入门手册,廖雪峰python
+tag: python入门手册,廖雪峰python
 Categories： python入门手册
 ---
 
