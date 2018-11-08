@@ -11,7 +11,7 @@
    "python学习资源": {
     "title": "python学习资源",
     "subTitle": "",
-    "img_link": "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=550914927,3739490630&fm=27&gp=0.jpg",
+    "img_link": "",
     "use" : ["python进阶","python"],
     "link": "https://github.com/boy-hack/awesome-python-cn ",
     "data": "2018.11",
@@ -20,7 +20,7 @@
    "linux安装ssr": {	
     "title": "linux安装GUI的ssr客户端",	
     "subTitle": "",	
-    "img_link": "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=550914927,3739490630&fm=27&gp=0.jpg",	
+    "img_link": "",	
     "use" : ["ssr-gui","Linux-ssr","ssr","linux"],	
     "link": "https://github.com/erguotou520/electron-ssr/",	
     "data": "2018.11",	
