@@ -1,8 +1,8 @@
 # Header
 menu:
   Home: /
-  #My Works: /works
-  #About: /about
+  My Works: /works
+  About: /about
   #Tags: /tags
 
 rss: /atom.xml
