@@ -126,3 +126,4 @@ print str[:-5:-3] #逆序截取，具体啥意思没搞明白？
 789
 96
 ```
+https://www.cnblogs.com/chendai21/p/8137285.html
