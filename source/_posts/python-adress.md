@@ -9,7 +9,7 @@ categories:
 ---
 
 1.[python学习地址](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000 "python学习地址")
-/n
+
 2.http://www.runoob.com/python3/
 ```python
 class Student(object):
