@@ -98,7 +98,8 @@ print("网站名：{name}, 地址 {url}".format(**site))
 my_list = ['菜鸟教程', 'www.runoob.com']
 print("网站名：{0[0]}, 地址 {0[1]}".format(my_list))  # "0" 是必须的
 ```
-python的字符串截取
+python的[字符串截取](https://www.cnblogs.com/huangcong/archive/2011/08/29/2158268.html "字符串截取")
+
 ```python
 str = ‘0123456789’
 print str[0:3] #截取第一位到第三位的字符
