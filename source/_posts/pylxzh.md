@@ -9,7 +9,7 @@ categories:
 ---
 python数据类型之间的转换
 对python内置的数据类型进行转换时，可以使用内置函数，常用的类型转换函数如下
-、、、
+```python
 python常用类型转换函数
 函数格式	使用示例	描述
 int(x [,base])	int("8")	  可以转换的包括String类型和其他数字类型，但是会丢失精度      
@@ -26,4 +26,4 @@ float(x)	 float(1)或者float("1")	 可以转换String和其他数字类型，�
  ord(x)	 ord('a')	 返回对应的 ASCII 数值，或者 Unicode 数值
  hex(x)	 hex(12)	 把一个整数转换为十六进制字符串
  oct(x)	 oct(12)	 把一个整数转换为八进制字符串
- 、、、
+ ```
