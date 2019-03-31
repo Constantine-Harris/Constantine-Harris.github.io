@@ -129,9 +129,9 @@ print("Text: " + $content);
 
 # 规则文件命名规范
 ```
-rules/CVI-100001.xml
+rules/YVI-100001.xml
 ```
 存放统一在rules目录
-大写字母CVI开头，横杠（ - ）分割
+大写字母YVI开头，横杠（ - ）分割
 六位数字组成，前三位为标签ID，后三位为自增ID
 结尾以小写的.xml结束
