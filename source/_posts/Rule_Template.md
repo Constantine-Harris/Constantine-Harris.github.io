@@ -34,7 +34,7 @@ categories:
         将密码抽出统一放在配置文件中，配置文件不放在git中
     </solution>
     <status value="on"/>
-    <author name="Feei" email="feei@feei.cn"/>
+    <author name="xxxx" email="xxx@xxx.xxx"/>
 </insight>
 ```
 ### 规则字段规范
