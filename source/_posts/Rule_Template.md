@@ -50,7 +50,7 @@ categories:
 |solution|修复方案|是|string|该规则扫描的漏洞对应的安全风险和修复方案|```<solution>详细的安全风险和修复方案</solution>```|
 |test|测试用例|是|case|该规则对应的测试用例|```<test><case assert="true"><![CDATA[测试存在漏洞的代码]]></case><case assert="false"><![CDATA[测试不存在漏洞的代码]]></case>```|
 |status|是否开启|是|boolean|是否开启该规则的扫描，使用on/off来标记|```<status value="1" />```|
-|author|规则作者|是|attr|规则作者的姓名和邮箱|```<author name="Feei" email="feei@feei.cn" />```|
+|author|规则作者|是|attr|规则作者的姓名和邮箱|```<author name="xxx" email="xxx@xxx.xxx" />```|
 ### 核心字段
  ```
  <match>/<match2>/<repair>编写规范:
