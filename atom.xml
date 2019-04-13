@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title></title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://genleak.com/"/>
+  <updated>2019-04-13T07:35:08.904Z</updated>
+  <id>https://genleak.com/</id>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Rule Template（规则模板）</title>
+    <link href="https://genleak.com/2019/03/26/Rule_Template/"/>
+    <id>https://genleak.com/2019/03/26/Rule_Template/</id>
+    <published>2019-03-26T12:20:00.000Z</published>
+    <updated>2019-04-13T07:35:08.904Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Rule-Template（规则模板）"><a href="#Rule-Template（规则模板）" class="headerlink" title="Rule Template（规则模板）"></a>Rule Template（规则模板）</h1><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;insight document=&quot;https://insight.yueanke.com/cvi&quot;&gt;    &lt;name value=&quot;硬编码Token/Key&quot;/&gt;    &lt;language value=&quot;*&quot;/&gt;    &lt;match mode=&quot;regex-only-match&quot;&gt;&lt;![CDATA[(?![\d]{32})(?![a-fA-F]{32})([a-f\d]{32}|[A-F\d]{32})]]&gt;&lt;/match&gt;    &lt;level value=&quot;2&quot;/&gt;    &lt;test&gt;        &lt;case assert=&quot;true&quot; remark=&quot;sha1&quot;&gt;&lt;![CDATA[&quot;41a6bc4d9a033e1627f448f0b9593f9316d071c1&quot;]]&gt;&lt;/case&gt;        &lt;case assert=&quot;true&quot; remark=&quot;md5 lower&quot;&gt;&lt;![CDATA[&quot;d042343e49e40f16cb61bd203b0ce756&quot;]]&gt;&lt;/case&gt;        &lt;case assert=&quot;true&quot; remark=&quot;md5 upper&quot;&gt;&lt;![CDATA[C787AFE9D9E86A6A6C78ACE99CA778EE]]&gt;&lt;/case&gt;        &lt;case assert=&quot;false&quot;&gt;&lt;![CDATA[please like and subscribe to my]]&gt;&lt;/case&gt;        &lt;case assert=&quot;false&quot;&gt;&lt;![CDATA[A32efC32c79823a2123AA8cbDDd3231c]]&gt;&lt;/case&gt;        &lt;case assert=&quot;false&quot;&gt;&lt;![CDATA[ffffffffffffffffffffffffffffffff]]&gt;&lt;/case&gt;        &lt;case assert=&quot;false&quot;&gt;&lt;![CDATA[01110101001110011101011010101001]]&gt;&lt;/case&gt;        &lt;case assert=&quot;false&quot;&gt;&lt;![CDATA[00000000000000000000000000000000]]&gt;&lt;/case&gt;    &lt;/test&gt;    &lt;solution&gt;        ## 安全风险        硬编码密码        ## 修复方案        将密码抽出统一放在配置文件中，配置文件不放在git中    &lt;/solution&gt;    &lt;status value=&quot;on&quot;/&gt;    &lt;author name=&quot;xxxx&quot; email=&quot;xxx@xxx.xxx&quot;/&gt;&lt;/insight&gt;</code></pre><h3 id="规则字段规范"><a href="#规则字段规范" class="headerlink" title="规则字段规范"></a>规则字段规范</h3><table><thead><tr><th>字段（英文）</th><th>字段（中文）</th><th>是否必填</th><th>类型</th><th>描述</th><th>例子</th></tr></thead><tbody><tr><td>name</td><td>规则名称</td><td>是</td><td>string</td><td>描述规则名称</td><td><code>&lt;name value=&quot;Logger敏感信息&quot; /&gt;</code></td></tr><tr><td>language</td><td>规则语言</td><td>是</td><td>string</td><td>设置规则针对的开发语言，参见languages</td><td><code>&lt;language value=&quot;php&quot; /&gt;</code></td></tr><tr><td>match</td><td>匹配规则1</td><td>是</td><td>string</td><td>匹配规则1</td><td><code>&lt;match mode=&quot;regex-only-match&quot;&gt;&lt;![CDATA[regex content]]&gt;&lt;/match&gt;</code></td></tr><tr><td>match2</td><td>匹配规则2</td><td>否</td><td>string</td><td>匹配规则2</td><td><code>&lt;match2 block=&quot;in-function-up&quot;&gt;&lt;![CDATA[regex content]]&gt;&lt;/match2&gt;</code></td></tr><tr><td>repair</td><td>修复规则</td><td>否</td><td>string</td><td>匹配到此规则，则不算做漏洞</td><td><code>&lt;repair block=&quot;&quot;&gt;&lt;![CDATA[regex content]]&gt;&lt;/repair&gt;</code></td></tr><tr><td>level</td><td>影响等级</td><td>是</td><td>integer</td><td>标记该规则扫到的漏洞危害等级，使用数字1-10。</td><td><code>&lt;level value=&quot;3&quot; /&gt;</code></td></tr><tr><td>solution</td><td>修复方案</td><td>是</td><td>string</td><td>该规则扫描的漏洞对应的安全风险和修复方案</td><td><code>&lt;solution&gt;详细的安全风险和修复方案&lt;/solution&gt;</code></td></tr><tr><td>test</td><td>测试用例</td><td>是</td><td>case</td><td>该规则对应的测试用例</td><td><code>&lt;test&gt;&lt;case assert=&quot;true&quot;&gt;&lt;![CDATA[测试存在漏洞的代码]]&gt;&lt;/case&gt;&lt;case assert=&quot;false&quot;&gt;&lt;![CDATA[测试不存在漏洞的代码]]&gt;&lt;/case&gt;</code></td></tr><tr><td>status</td><td>是否开启</td><td>是</td><td>boolean</td><td>是否开启该规则的扫描，使用on/off来标记</td><td><code>&lt;status value=&quot;1&quot; /&gt;</code></td></tr><tr><td>author</td><td>规则作者</td><td>是</td><td>attr</td><td>规则作者的姓名和邮箱</td><td><code>&lt;author name=&quot;xxx&quot; email=&quot;xxx@xxx.xxx&quot; /&gt;</code></td></tr></tbody></table><h3 id="核心字段"><a href="#核心字段" class="headerlink" title="核心字段"></a>核心字段</h3><pre><code> &lt;match&gt;/&lt;match2&gt;/&lt;repair&gt;编写规范: &lt;match&gt; Mode（&lt;match&gt;的规则模式）                                用来描述规则类型，只能用在&lt;match&gt;中。</code></pre><table><thead><tr><th>Mode</th><th>类型</th><th>默认模式</th><th>支持语言</th><th>描述</th></tr></thead><tbody><tr><td>regex-only-match</td><td>正则仅匹配</td><td>是</td><td>*</td><td>默认是此模式，但需要显式的写在规则文件里。以正则的方式进行匹配，匹配到内容则算作漏洞</td></tr><tr><td>regex-param-controllable</td><td>正则参数可控</td><td>否</td><td>PHP/Java</td><td>以正则模式进行匹配，匹配出的变量可外部控制则为漏洞</td></tr><tr><td>function-param-controllable</td><td>函数参数可控</td><td>否</td><td>PHP</td><td>内容写函数名，将搜索所有该函数的调用，若参数外部可控则为漏洞。</td></tr><tr><td>find-extension</td><td>寻找指定后缀文件</td><td>否</td><td>*</td><td>找到指定后缀文件则算作漏洞</td></tr></tbody></table><pre><code>&lt;Match2&gt;/&lt;Repair&gt; Block（&lt;Match2&gt;/&lt;Repair&gt;的匹配区块）用来描述需要匹配的代码区块位置，只能用在&lt;Match2&gt;或&lt;Repair&gt;中。</code></pre><table><thead><tr><th>区块</th><th>描述</th></tr></thead><tbody><tr><td>in-current-line</td><td>由第一条规则触发的所在行</td></tr><tr><td>in-function</td><td>由第一条规则触发的函数体内</td></tr><tr><td>in-function-up</td><td>由第一条规则触发的所在行之上，所在函数体之内</td></tr><tr><td>in-function-down</td><td>由第一条规则触发的所在行之下，所在函数体之内</td></tr><tr><td>in-file</td><td>由第一条规则触发的文件内</td></tr><tr><td>in-file-up</td><td>由第一条规则触发的所在行之上，所在文件之内</td></tr><tr><td>in-file-down</td><td>由第一条规则触发的所在行之下，所在文件之内</td></tr></tbody></table><h1 id="演示（例子）"><a href="#演示（例子）" class="headerlink" title="演示（例子）"></a>演示（例子）</h1><p>把常见漏洞划分为四大类</p><p>1.单一匹配：仅匹配单次<br>例子：错误的配置（使用了ECB模式）</p><pre><code>Cipher c = Cipher.getInstance(&quot;AES/ECB/NoPadding&quot;);</code></pre><p>解决方案（规则写法）</p><p>可以通过配置一条匹配规则，规则模式设置为regex（仅匹配，通过正则模式匹配，匹配到则算作漏洞），即可扫描这类问题。</p><pre><code>&lt;match mode=&quot;regex-only-match&quot;&gt;&lt;![CDATA[Cipher....Instance\s?\(\s?\&quot;.*ECB]]&gt;&lt;/match&gt;</code></pre><p>2.多次匹配：需要进行多次匹配<br>例子：不安全的随机数（首先需要匹配到生成了随机数new Random，然后要确保随机数是系统的随机数而非自定义函数）</p><pre><code>import util.random;Random r = new Random();</code></pre><p>解决方案（规则写法）</p><p>配置先一条match规则来匹配new Random，配置再一条match来匹配import util.random。</p><pre><code>&lt;match mode=&quot;regex-only-match&quot;&gt;&lt;![CDATA[new Random\s*\(|Random\.next]]&gt;&lt;/match&gt;&lt;match2 block=&quot;in-file-up&quot;&gt;&lt;![CDATA[java|scala)\.util\.Random]]&gt;&lt;/match2&gt;</code></pre><p>3.参数可控：只要判定参数是用户可控的则算作漏洞<br>例子：反射型XSS（直接输出入参）</p><pre><code>$content = $_GET[&#39;content&#39;];print(&quot;Text: &quot; + $content);</code></pre><p>解决方案（规则写法）</p><pre><code>&lt;match mode=&quot;function-param-controllable&quot;&gt;&lt;![CDATA[print]]&gt;&lt;/match&gt;</code></pre><p>4.依赖安全：当依赖了某个不安全版本的三方组件<br>安全依赖的规则固定配置在CVI-999999.xml中。</p><p>例子：FastJSON v1.2.24版本存在RCE漏洞</p><p>解决方案（规则写法）</p><pre><code>&lt;cve id=&quot;FastJSON RCE&quot; level=&quot;HIGH&quot;&gt;    &lt;product&gt;fastjson:1.2.24&lt;/product&gt;&lt;/cve&gt;</code></pre><h1 id="规则文件命名规范"><a href="#规则文件命名规范" class="headerlink" title="规则文件命名规范"></a>规则文件命名规范</h1><pre><code>rules/YVI-100001.xml</code></pre><p>存放统一在rules目录<br>大写字母YVI开头，横杠（ - ）分割<br>六位数字组成，前三位为标签ID，后三位为自增ID<br>结尾以小写的.xml结束</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Rule-Template（规则模板）&quot;&gt;&lt;a href=&quot;#Rule-Template（规则模板）&quot; class=&quot;headerlink&quot; title=&quot;Rule Template（规则模板）&quot;&gt;&lt;/a&gt;Rule Template（规则模板）&lt;/h1&gt;&lt;pre&gt;
+      
+    
+    </summary>
+    
+      <category term="insight" scheme="https://genleak.com/categories/insight/"/>
+    
+    
+      <category term="insight" scheme="https://genleak.com/tags/insight/"/>
+    
+      <category term="Rule Template" scheme="https://genleak.com/tags/Rule-Template/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python爬虫实战</title>
+    <link href="https://genleak.com/2018/11/23/pcsj/"/>
+    <id>https://genleak.com/2018/11/23/pcsj/</id>
+    <published>2018-11-23T10:24:00.000Z</published>
+    <updated>2019-04-13T07:35:08.904Z</updated>
+    
+    <content type="html"><![CDATA[<p>如何爬取别人的博客：<br><a href="http://www.cnblogs.com/ospider/p/5911339.html" title="LXML解析HTML" target="_blank" rel="noopener">LXML解析HTML</a><br><a href="http://www.runoob.com/python3/python3-file-methods.html" title="python文件读写" target="_blank" rel="noopener">python文件读写</a></p><pre><code class="python">import requestsimport timeimport refrom lxml import html#文件读写新建一个文件1.txt，必须使用一个编码格式aa = open(&quot;C:\\Users\\john\\1.txt&quot;, mode=&#39;x&#39;, encoding=&quot;utf-8&quot;)#遍历a-z网站页面for i in range(ord(&quot;a&quot;),ord(&quot;z&quot;)+1):    a = &quot;http://flvoters.com/index_pages/&quot;+(chr(i))+&quot;.html&quot;    b = requests.get(a)    #正则匹配正确的链接格式    c = re.finditer(&#39;&#39;&#39;[a-zA-z]+://flvoters.com/index_pages/&#39;&#39;&#39;+chr(i)+&#39;&#39;&#39;[1-9][0-9]{1,}[^&quot;&#39;\s]*&#39;&#39;&#39;, b.text)    time.sleep(5)    #正则匹配正确的链接格式    print(1)    for match in c:        d = requests.get(match.group())        e = re.finditer(&#39;&#39;&#39;[a-zA-z]+://flvoters.com/pages/&#39;&#39;&#39;+chr(i)+&#39;&#39;&#39;[1-9][0-9]{4,}[^&quot;&#39;\s]*&#39;&#39;&#39;,d.text)        time.sleep(5)        #替换https为http        for match1 in e:            f = match1.group()            f = f.replace(&quot;https://&quot;, &quot;http://&quot;)            print(f)            g =requests.get(f)            time.sleep(10)            #查找正确的内容            i = re.finditer(&#39;&#39;&#39;&lt;br&gt;&lt;br&gt;&lt;big&gt;[^\n]*&#39;&#39;&#39;,g.text)            g.close()            #lxml解析            for j in i:                doc = html.fromstring(j.group())                aa.write(doc.text_content()+&quot;\n&quot;)</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;如何爬取别人的博客：&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/ospider/p/5911339.html&quot; title=&quot;LXML解析HTML&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;LXML解析HTML&lt;/a&gt;&lt;br
+      
+    
+    </summary>
+    
+      <category term="python" scheme="https://genleak.com/categories/python/"/>
+    
+      <category term="爬虫" scheme="https://genleak.com/categories/python/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="爬虫" scheme="https://genleak.com/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="python" scheme="https://genleak.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python爬虫入门</title>
+    <link href="https://genleak.com/2018/11/22/pcrm/"/>
+    <id>https://genleak.com/2018/11/22/pcrm/</id>
+    <published>2018-11-22T10:24:00.000Z</published>
+    <updated>2019-04-13T07:35:08.904Z</updated>
+    
+    <content type="html"><![CDATA[<p>如何爬取自己的博客<br>首先学会了<a href="http://docs.python-requests.org/zh_CN/latest/user/quickstart.html#" title="requests快速上手" target="_blank" rel="noopener">requests快速上手</a><br>了解博客存在一个xml文件–<a href="http://genleak.com/atom.xml" title="genleak.com/atom.xml">genleak.com/atom.xml</a><br>然后学习了XML解析<a href="http://www.runoob.com/python3/python3-xml-processing.html" title="Python xml解析" target="_blank" rel="noopener">Python xml解析</a></p><pre><code class="python">import requestsfrom xml.dom.minidom import parseimport xml.dom.minidomimport json# 使用requests请求获得 XML 文档a = requests.get(&quot;http://genleak.com/atom.xml&quot;)# 使用minidom解析器打开 XML 文档DOMTree = xml.dom.minidom.parseString(str(a.text))collection = DOMTree.documentElement# 在集合中获取所有文章，文章开头标签是entryentrys = collection.getElementsByTagName(&quot;entry&quot;)# 或者每片文章的详细信息，同时还要检验是否有空文章for entry in entrys:   # print(&quot;*****page*****&quot;)   title,summary,published,content =&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;   if entry.getElementsByTagName(&quot;title&quot;)[0].childNodes:      # print(&quot;Title: %s&quot; % entry.getElementsByTagName(&#39;title&#39;)[0].childNodes[0].data)      title= entry.getElementsByTagName(&#39;title&#39;)[0].childNodes[0].data   if entry.getElementsByTagName(&quot;summary&quot;)[0].childNodes:       summary1 = entry.getElementsByTagName(&#39;summary&#39;)[0]       # print(&quot;summary: %s&quot; % summary1.childNodes[0].data)       summary = entry.getElementsByTagName(&#39;summary&#39;)[0].childNodes[0].data   if entry.getElementsByTagName(&quot;published&quot;)[0].childNodes:       published1 = entry.getElementsByTagName(&#39;published&#39;)[0]       # print(&quot;published: %s&quot; % published1.childNodes[0].data)       published = entry.getElementsByTagName(&#39;published&#39;)[0].childNodes[0].data   if entry.getElementsByTagName(&quot;content&quot;):       content1 = entry.getElementsByTagName(&#39;content&#39;)[0]       # print(&quot;content: %s&quot; % content1.childNodes[0].data)       content = entry.getElementsByTagName(&#39;content&#39;)[0].childNodes[0].data</code></pre><p>如果用数组存储：</p><pre><code class="python">   arr = {&quot;Title&quot;,str(title),&quot;Summary&quot;,str(summary),&quot;published&quot;,str(published),&quot;content&quot;,str(content)}   json_str = json.dumps(arr)   print(json_str)</code></pre><pre><code class="python">[&quot;Title&quot;, &quot;&quot;, &quot;Summary&quot;, &quot;\n    \n    &quot;, &quot;published&quot;, &quot;2018-11-22T10:25:07.643Z&quot;, &quot;content&quot;, &quot;&quot;]</code></pre><p>出现并不是json格式，经过查阅使用字典<br><a href="http://www.runoob.com/python3/python3-json.html" title="Python3 JSON" target="_blank" rel="noopener">Python3 JSON</a><br>json.dumps(): 对数据进行编码。<br>json.loads(): 对数据进行解码。<br>如果你要处理的是文件而不是字符串，你可以使用 json.dump() 和 json.load() 来编码和解码JSON数据。</p><pre><code class="python">arr = {&quot;Title&quot;:str(title),&quot;Summary&quot;:str(summary),&quot;published&quot;:str(published),&quot;content&quot;:str(content)}json_str = json.dumps(arr)print(json_str)</code></pre><pre><code class="python">{&quot;Title&quot;: &quot;&quot;, &quot;Summary&quot;: &quot;\n    \n    &quot;, &quot;published&quot;: &quot;2018-11-22T10:25:07.643Z&quot;, &quot;content&quot;: &quot;&quot;}</code></pre><pre><code class="python">#application/json是json的content类型，   headers = {&#39;Content-Type&#39;: &#39;application/json&#39;}   #通过requests传入json到ES，名叫blog的索引和名叫pages的类型，同时新版只能使用post   r = requests.post(&#39;http://172.16.1.215:9200/blog/pages&#39;, data=json_str,headers=headers)</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;如何爬取自己的博客&lt;br&gt;首先学会了&lt;a href=&quot;http://docs.python-requests.org/zh_CN/latest/user/quickstart.html#&quot; title=&quot;requests快速上手&quot; target=&quot;_blank&quot; rel=&quot;
+      
+    
+    </summary>
+    
+      <category term="python" scheme="https://genleak.com/categories/python/"/>
+    
+      <category term="爬虫" scheme="https://genleak.com/categories/python/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="爬虫" scheme="https://genleak.com/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="python" scheme="https://genleak.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python迭代器与生成器</title>
+    <link href="https://genleak.com/2018/11/17/pyddq/"/>
+    <id>https://genleak.com/2018/11/17/pyddq/</id>
+    <published>2018-11-17T10:02:00.000Z</published>
+    <updated>2019-04-13T07:35:08.904Z</updated>
+    
+    <content type="html"><![CDATA[<p>创建一个迭代器<br>把一个类作为一个迭代器使用需要在类中实现两个方法 <strong>iter</strong>() 与 <strong>next</strong>() 。</p><p>如果你已经了解的面向对象编程，就知道类都有一个构造函数，Python 的构造函数为 <strong>init</strong>(), 它会在对象初始化的时候执行。更多内容查阅：Python3 面向对象</p><p><strong>iter</strong>() 方法返回一个特殊的迭代器对象， 这个迭代器对象实现了 <strong>next</strong>() 方法并通过 StopIteration 异常标识迭代的完成。</p><p><strong>next</strong>() 方法（Python 2 里是 next()）会返回下一个迭代器对象。</p><p>创建一个返回数字的迭代器，初始值为 1，逐步递增 1：</p><p>实例(Python 3.0+)</p><pre><code class="python">class MyNumbers:  def __iter__(self):    self.a = 1    return self  def __next__(self):    x = self.a    self.a += 1    return xmyclass = MyNumbers()myiter = iter(myclass)print(next(myiter))print(next(myiter))print(next(myiter))print(next(myiter))print(next(myiter))</code></pre><p>执行输出结果为：</p><pre><code class="python">12345</code></pre><p>StopIteration<br>StopIteration 异常用于标识迭代的完成，防止出现无限循环的情况，在 <strong>next</strong>() 方法中我们可以设置在完成指定循环次数后触发 StopIteration 异常来结束迭代。</p><p>在 20 次迭代后停止执行：</p><p>实例(Python 3.0+)</p><pre><code class="python">class MyNumbers:  def __iter__(self):    self.a = 1    return self  def __next__(self):    if self.a &lt;= 20:      x = self.a      self.a += 1      return x    else:      raise StopIterationmyclass = MyNumbers()myiter = iter(myclass)for x in myiter:  print(x)</code></pre><p>执行输出结果为：</p><pre><code>1234567891011121314151617181920</code></pre><p>生成器<br>在 Python 中，使用了 yield 的函数被称为生成器（generator）。</p><p>跟普通函数不同的是，生成器是一个返回迭代器的函数，只能用于迭代操作，更简单点理解生成器就是一个迭代器。</p><p>在调用生成器运行的过程中，每次遇到 yield 时函数会暂停并保存当前所有的运行信息，返回 yield 的值, 并在下一次执行 next() 方法时从当前位置继续运行。</p><p>调用一个生成器函数，返回的是一个迭代器对象。</p><p>以下实例使用 yield 实现斐波那契数列：</p><p>实例(Python 3.0+)</p><pre><code class="python">#!/usr/bin/python3import sysdef fibonacci(n): # 生成器函数 - 斐波那契    a, b, counter = 0, 1, 0    while True:        if (counter &gt; n):             return        yield a        a, b = b, a + b        counter += 1f = fibonacci(10) # f 是一个迭代器，由生成器返回生成while True:    try:        print (next(f), end=&quot; &quot;)    except StopIteration:        sys.exit()</code></pre><p>执行以上程序，输出结果如下：</p><pre><code class="python">0 1 1 2 3 5 8 13 21 34 55</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;创建一个迭代器&lt;br&gt;把一个类作为一个迭代器使用需要在类中实现两个方法 &lt;strong&gt;iter&lt;/strong&gt;() 与 &lt;strong&gt;next&lt;/strong&gt;() 。&lt;/p&gt;
+&lt;p&gt;如果你已经了解的面向对象编程，就知道类都有一个构造函数，Python 的构造函数为 
+      
+    
+    </summary>
+    
+      <category term="python入门" scheme="https://genleak.com/categories/python%E5%85%A5%E9%97%A8/"/>
+    
+    
+      <category term="python入门" scheme="https://genleak.com/tags/python%E5%85%A5%E9%97%A8/"/>
+    
+      <category term="迭代器与生成器" scheme="https://genleak.com/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/"/>
+    
+      <category term="面对对象" scheme="https://genleak.com/tags/%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python学习笔记</title>
+    <link href="https://genleak.com/2018/11/16/pylxzh/"/>
+    <id>https://genleak.com/2018/11/16/pylxzh/</id>
+    <published>2018-11-16T10:02:00.000Z</published>
+    <updated>2019-04-13T07:35:08.904Z</updated>
+    
+    <content type="html"><![CDATA[<p>python数据类型之间的转换<br>对python内置的数据类型进行转换时，可以使用内置函数，常用的类型转换函数如下</p><pre><code class="python">python常用类型转换函数函数格式    使用示例    描述int(x [,base])    int(&quot;8&quot;)      可以转换的包括String类型和其他数字类型，但是会丢失精度      float(x)     float(1)或者float(&quot;1&quot;)     可以转换String和其他数字类型，不足的位数用0补齐，例如1会变成1.0 complex(real ,imag)     complex(&quot;1&quot;)或者complex(1,2)     第一个参数可以是String或者数字，第二个参数只能为数字类型，第二个参数没有时默认为0 str(x)     str(1)     将数字转化为String repr(x)     repr(Object)     返回一个对象的String格式 eval(str)     eval(&quot;12+23&quot;)     执行一个字符串表达式，返回计算的结果,如例子中返回35 tuple(seq)     tuple((1,2,3,4))     参数可以是元组、列表或者字典，wie字典时，返回字典的key组成的集合 list(s)     list((1,2,3,4))     将序列转变成一个列表，参数可为元组、字典、列表，为字典时，返回字典的key组成的集合 set(s)     set([&#39;b&#39;, &#39;r&#39;, &#39;u&#39;, &#39;o&#39;, &#39;n&#39;])或者set(&quot;asdfg&quot;)     将一个可以迭代对象转变为可变集合，并且去重复，返回结果可以用来计算差集x - y、并集x | y、交集x &amp; y frozenset(s)     frozenset([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])     将一个可迭代对象转变成不可变集合，参数为元组、字典、列表等， chr(x)     chr(0x30)     chr()用一个范围在 range（256）内的（就是0～255）整数作参数，返回一个对应的字符。返回值是当前整数对应的ascii字符。 ord(x)     ord(&#39;a&#39;)     返回对应的 ASCII 数值，或者 Unicode 数值 hex(x)     hex(12)     把一个整数转换为十六进制字符串 oct(x)     oct(12)     把一个整数转换为八进制字符串</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;python数据类型之间的转换&lt;br&gt;对python内置的数据类型进行转换时，可以使用内置函数，常用的类型转换函数如下&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;python&quot;&gt;python常用类型转换函数
+函数格式    使用示例    描述
+int(x [,base]
+      
+    
+    </summary>
+    
+      <category term="python入门" scheme="https://genleak.com/categories/python%E5%85%A5%E9%97%A8/"/>
+    
+    
+      <category term="python入门" scheme="https://genleak.com/tags/python%E5%85%A5%E9%97%A8/"/>
+    
+      <category term="强制类型转换" scheme="https://genleak.com/tags/%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python学习笔记</title>
+    <link href="https://genleak.com/2018/11/13/python1/"/>
+    <id>https://genleak.com/2018/11/13/python1/</id>
+    <published>2018-11-13T10:02:00.000Z</published>
+    <updated>2019-04-13T07:35:08.904Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code class="python">print(&#39;%.2f&#39; % 3.1415926)</code></pre><p>这里.2f表示输出小数点后两位</p><pre><code class="python">&gt;&gt;&gt; &#39;Hello, {0}, 成绩提升了 {1:.1f}%&#39;.format(&#39;小明&#39;, 17.125)&#39;Hello, 小明, 成绩提升了 17.1%&#39;</code></pre><p>{1:.1f}% 这里的:.1f表示用1f格式处理输出<br>Python字符串格式化<br>Python 支持格式化字符串的输出 。尽管这样可能会用到非常复杂的表达式，但最基本的用法是将一个值插入到一个有字符串格式符 %s 的字符串中。</p><p>在 Python 中，字符串格式化使用与 C 中 sprintf 函数一样的语法。</p><p>实例(Python 3.0+)</p><pre><code class="python">#!/usr/bin/python3print (&quot;我叫 %s 今年 %d 岁!&quot; % (&#39;小明&#39;, 10))</code></pre><p>以上实例输出结果：</p><p>我叫 小明 今年 10 岁!<br>python字符串格式化符号:</p><pre><code class="python">    符   号    描述      %c     格式化字符及其ASCII码      %s     格式化字符串      %d     格式化整数      %u     格式化无符号整型      %o     格式化无符号八进制数      %x     格式化无符号十六进制数      %X     格式化无符号十六进制数（大写）      %f     格式化浮点数字，可指定小数点后的精度      %e     用科学计数法格式化浮点数      %E     作用同%e，用科学计数法格式化浮点数      %g     %f和%e的简写      %G     %f 和 %E 的简写      %p     用十六进制数格式化变量的地址</code></pre><p>格式化操作符辅助指令:</p><pre><code class="python">符号    功能*    定义宽度或者小数点精度-    用做左对齐+    在正数前面显示加号( + )&lt;sp&gt;    在正数前面显示空格#    在八进制数前面显示零(&#39;0&#39;)，在十六进制前面显示&#39;0x&#39;或者&#39;0X&#39;(取决于用的是&#39;x&#39;还是&#39;X&#39;)0    显示的数字前面填充&#39;0&#39;而不是默认的空格%    &#39;%%&#39;输出一个单一的&#39;%&#39;(var)    映射变量(字典参数)m.n.    m 是显示的最小总宽度,n 是小数点后的位数(如果可用的话)Python2.6 开始，新增了一种格式化字符串的函数 str.format()，它增强了字符串格式化的功能。</code></pre><p>基本语法是通过 {} 和 : 来代替以前的 % 。</p><p>format 函数可以接受不限个参数，位置可以不按顺序。<br><a href="http://www.runoob.com/python/att-string-format.html" title="format详解" target="_blank" rel="noopener">format详解</a></p><p>实例</p><pre><code class="python">&gt;&gt;&gt;&quot;{} {}&quot;.format(&quot;hello&quot;, &quot;world&quot;)    # 不设置指定位置，按默认顺序&#39;hello world&#39;&gt;&gt;&gt; &quot;{0} {1}&quot;.format(&quot;hello&quot;, &quot;world&quot;)  # 设置指定位置&#39;hello world&#39;&gt;&gt;&gt; &quot;{1} {0} {1}&quot;.format(&quot;hello&quot;, &quot;world&quot;)  # 设置指定位置&#39;world hello world&#39;</code></pre><p>也可以设置参数：</p><p>实例</p><pre><code class="python">#!/usr/bin/python# -*- coding: UTF-8 -*-print(&quot;网站名：{name}, 地址 {url}&quot;.format(name=&quot;菜鸟教程&quot;, url=&quot;www.runoob.com&quot;))# 通过字典设置参数site = {&quot;name&quot;: &quot;菜鸟教程&quot;, &quot;url&quot;: &quot;www.runoob.com&quot;}print(&quot;网站名：{name}, 地址 {url}&quot;.format(**site))# 通过列表索引设置参数my_list = [&#39;菜鸟教程&#39;, &#39;www.runoob.com&#39;]print(&quot;网站名：{0[0]}, 地址 {0[1]}&quot;.format(my_list))  # &quot;0&quot; 是必须的</code></pre><p>python的<a href="https://www.cnblogs.com/huangcong/archive/2011/08/29/2158268.html" title="字符串截取" target="_blank" rel="noopener">字符串截取</a></p><pre><code class="python">str = ‘0123456789’print str[0:3] #截取第一位到第三位的字符print str[:] #截取字符串的全部字符print str[6:] #截取第七个字符到结尾print str[:-3] #截取从头开始到倒数第三个字符之前print str[2] #截取第三个字符print str[-1] #截取倒数第一个字符print str[::-1] #创造一个与原字符串顺序相反的字符串print str[-3:-1] #截取倒数第三位与倒数第一位之前的字符print str[-3:] #截取倒数第三位到结尾print str[:-5:-3] #逆序截取，具体啥意思没搞明白？</code></pre><p>对应的输出结果：</p><pre><code class="python">0120123456789678901234562998765432107878996</code></pre><p><a href="https://www.cnblogs.com/chendai21/p/8137285.html" target="_blank" rel="noopener">https://www.cnblogs.com/chendai21/p/8137285.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code class=&quot;python&quot;&gt;print(&amp;#39;%.2f&amp;#39; % 3.1415926)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里.2f表示输出小数点后两位&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &amp;#39
+      
+    
+    </summary>
+    
+      <category term="python入门" scheme="https://genleak.com/categories/python%E5%85%A5%E9%97%A8/"/>
+    
+    
+      <category term="python入门" scheme="https://genleak.com/tags/python%E5%85%A5%E9%97%A8/"/>
+    
+      <category term="字符串" scheme="https://genleak.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git使用</title>
+    <link href="https://genleak.com/2018/11/08/git-use/"/>
+    <id>https://genleak.com/2018/11/08/git-use/</id>
+    <published>2018-11-08T05:42:00.000Z</published>
+    <updated>2019-04-13T07:35:08.904Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="git使用（怕遗忘）"><a href="#git使用（怕遗忘）" class="headerlink" title="git使用（怕遗忘）"></a>git使用（怕遗忘）</h1><p>先输入账号和邮箱：</p><pre><code>git config --global user.name &quot;用户名&quot;</code></pre><pre><code>git config --global user.email &quot;邮箱&quot;</code></pre><p>git 同步master</p><pre><code>git clone xxxxxx.git</code></pre><p>git 同步分支</p><pre><code>git clone xxxxxx.git - b 分支名</code></pre><p>上传的话<br>输入命令 cd 文件夹地址，进入文件夹</p><pre><code>git init</code></pre><p>上传所有文件的话：</p><pre><code>git add .</code></pre><p>上传提交信息</p><pre><code>git commit  -m  &quot;提交信息&quot;</code></pre><p>将本地的库链接到仓库</p><pre><code>git remote add origin xxxxx.git</code></pre><p>失败的话</p><pre><code>git remote rm origin</code></pre><p>push</p><pre><code>git push</code></pre><p>Step1、查看代码的修改状态</p><p>打开git shell(环境：以windows为例，安装好Github的客户端并配置好账户信息)， 默认是在git的工作空间路径，ls命令可以查看workspace下的所有目录（建议：workspace下的目录应以项目为单位）, cd命令进入目标工程。</p><pre><code>git status</code></pre><p>红色或绿色部分字体是工程内的发生修改的状态标识:</p><p>modified 代表文件和上一版本相比，有过修改</p><p>new  file  代表文件是新增加的</p><p>deleted   代表文件被删除了，提交成功后，文件将从repository中删除</p><p>untracked file 一般都是新增加的文件夹</p><p>Step2、查看代码的修改内容</p><pre><code>git diff &lt;filename&gt; </code></pre><p>这里查看的是.gitignore文件的修改变化。<br>查看历史修改，需要用到节点hashcode（hashcode可以从github上commit记录上获得）:</p><pre><code>git diff &lt;hascode&gt; &lt;hashcode&gt; &lt;filename&gt;</code></pre><p>Step3、暂存需要提交的代码</p><p>增加一个需要上传的文件：</p><pre><code>git add &lt;filename&gt;</code></pre><p>删除一个不需要的文件：</p><pre><code>git rm &lt;filename&gt;</code></pre><p>增加全部需要上传的文件：</p><pre><code>git add --all</code></pre><p>Step4、提交已暂存的文件</p><p>我们现在推荐不加-m的方式</p><pre><code>git commit</code></pre><p>执行后会弹出编辑框，一行标题，另起一行，写上详细注释。这就符合git的上传规范了。</p><p>不推荐大家直接-m提交注释，因为只能写个标题。</p><pre><code>git commit -m &lt;comment&gt;</code></pre><p>如果发现有文件漏提或注释有误，使用amend修正：</p><pre><code>git commit --amend</code></pre><p>注意：使用commit命令只是将修改提交到本地仓库<br>Step5、同步到服务器</p><p>使用push命令形象的将修改push到github的代码服务器，so you can access the code anywhere.</p><pre><code>git push -u origin master</code></pre><p>同步到服务器前先需要将服务器代码同步到本地<br>命令：</p><pre><code>git pull</code></pre><p>如果执行失败，就按照提示还原有冲突的文件，然后再次尝试同步。<br>命令：<br><code>`</code>git checkout – &lt;有冲突的文件路径&gt;</p><pre><code>同步到服务器命令：```git push origin  &lt;本地分支名&gt;</code></pre><p>如果执行失败，一般是没有将服务器代码同步到本地导致的，先执行上面的git pull命令。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;git使用（怕遗忘）&quot;&gt;&lt;a href=&quot;#git使用（怕遗忘）&quot; class=&quot;headerlink&quot; title=&quot;git使用（怕遗忘）&quot;&gt;&lt;/a&gt;git使用（怕遗忘）&lt;/h1&gt;&lt;p&gt;先输入账号和邮箱：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config --
+      
+    
+    </summary>
+    
+      <category term="git" scheme="https://genleak.com/categories/git/"/>
+    
+    
+      <category term="git" scheme="https://genleak.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git使用的一些坑</title>
+    <link href="https://genleak.com/2018/11/08/git-keng/"/>
+    <id>https://genleak.com/2018/11/08/git-keng/</id>
+    <published>2018-11-08T05:42:00.000Z</published>
+    <updated>2019-04-13T07:35:08.904Z</updated>
+    
+    <content type="html"><![CDATA[<p>一.各种命令介绍：　<br>git pull：从其他的版本库(既可以是远程的也可以是本地的)将代码更新到本地，例如：’git pull origin master’就是将origin这个版本库的代码更新到本地的master主枝，该功能类似于SVN的update</p><p>git add：是将当前更改或者新增的文件加入到Git的索引中，加入到Git的索引中就表示记入了版本历史中，这也是提交之前所需要执行的一步，例如’git add app/model/user.rb’就会增加app/model/user.rb文件到Git的索引中</p><p>git rm：从当前的工作空间中和索引中删除文件，例如’git rm app/model/user.rb’</p><p>git commit：提交当前工作空间的修改内容，类似于SVN的commit命令，例如’git commit -m “story #3, add user model”‘，提交的时候必须用-m来输入一条提交信息</p><p>git push：将本地commit的代码更新到远程版本库中，例如’git push origin’就会将本地的代码更新到名为orgin的远程版本库中</p><p>git log：查看历史日志</p><p>git revert：还原一个版本的修改，必须提供一个具体的Git版本号，例如’git revert bbaf6fb5060b4875b18ff9ff637ce118256d6f20’，Git的版本号都是生成的一个哈希值、</p><p>二.使用步骤及流程<br>创建新仓库<br>git init<br>检出仓库<br>件来人肉合并这些 冲突（conflicts） 了。改完之后，你需要执行如下命令以将它们标记为合并成功：<br>git add <filename><br>在合并改动之前，也可以使用如下命令查看：<br>git diff &lt;source_branch&gt; &lt;target_branch&gt;<br>串创建一个本地仓库的克隆版本<br>git clone /path/to/repositoty<br>如果是远程服务器上的仓库<br>git clone username@host:/path/to/repository<br>件。已添加到缓存区的改动，以及新件，都不受影响。</filename></p><p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：<br>git fetch origin<br>git reset –hard origin/master<br>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际件；第二个是 缓存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。<br>添加与提交<br>你可以计划改动（把它们添加到缓存区），使用如下命令：<br>git add <filename><br>git add *<br>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动：<br>git commit -m “代码提交信息”<br>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。推送改动<br>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：<br>git push origin master<br>可以把 master 换成你想要推送的任何分支。 </filename></p><p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：<br>git remote add origin <server><br>如此你就能够将你的改动推送到所添加的服务器上去<br>分支<br>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上<br>创建一个叫做“feature_x”的分支，并切换过去：<br>git checkout -b feature_x<br>切换回主分支：<br>git checkout master<br>再把新建的分支删掉：<br>git branch -d feature_x<br>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：<br>git push origin <branch><br>更新与合并<br>要更新你的本地仓库至最新改动，执行：<br>git pull<br>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。<br>要合并其他分支到你的当前分支（例如 master），执行：<br>git merge <branch><br>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 了。改完之后，你需要执行如下命令以将它们标记为合并成功：<br>git add <filename><br>在合并改动之前，也可以使用如下命令查看：<br>git diff &lt;source_branch&gt; &lt;target_branch&gt;<br>替换本地改动<br>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：<br>git checkout – <filename><br>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</filename></filename></branch></branch></server></p><p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：<br>git fetch origin<br>git reset –hard origin/master</p><p>三.错误汇总<br>1.windows使用git时出现：warning: LF will be replaced by CRLF<br>windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执行add . 时出现提示，解决办法：</p><p>$ rm -rf .git  // 删除.git<br>$ git config –global core.autocrlf false  //禁用自动转换<br>然后重新执行：</p><p>$ git init<br>$ git add .<br>2.git push origin master出错：error: failed to push some refs to<br>很明显是：</p><p>本地没有update到最新版本的项目（git上有README.md文件没下载下来）</p><p>本地直接push所以会出错。</p><p>【解决过程】</p><p>1.看到提示里面，感觉是本地的代码不是最新的。</p><p>所以觉得应该是类似于svn中的，先update一下，再去commit，估计就可以了。</p><p>所以先去pull试试：</p><p>git pull  –rebase origin master</p><p>解决！</p><p>3.Git: cannot checkout branch - error: pathspec ‘…’ did not match any file(s) known to git<br>解决方案：传送门</p><p>4.fatal: remote origin already exists.<br>解决办法如下：</p><pre><code>1、先输入$ git remote rm origin2、再输入$ git remote add origin git@github.com:djqiang/gitdemo.git 就不会报错了！3、如果输入$ git remote rm origin 还是报错的话，error: Could not remove config section &#39;remote.origin&#39;. 我们需要修改gitconfig文件的内容4、找到你的github的安装路径，我的是C:\Users\ASUS\AppData\Local\GitHub\PortableGit_ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc5、找到一个名为gitconfig的文件，打开它把里面的[remote &quot;origin&quot;]那一行删掉就好了！如果输入$ ssh -T git@github.com出现错误提示：Permission denied (publickey).因为新生成的key不能加入ssh就会导致连接不上github。解决办法如下：1、先输入$ ssh-agent，再输入$ ssh-add ~/.ssh/id_key，这样就可以了。2、如果还是不行的话，输入ssh-add ~/.ssh/id_key 命令后出现报错Could not open a connection to your authentication agent.解决方法是key用Git Gui的ssh工具生成，这样生成的时候key就直接保存在ssh中了，不需要再ssh-add命令加入了，其它的user，token等配置都用命令行来做。3、最好检查一下在你复制id_rsa.pub文件的内容时有没有产生多余的空格或空行，有些编辑器会帮你添加这些的。如果输入$ git push origin master提示出错信息：error:failed to push som refs to .......解决办法如下：1、先输入$ git pull origin master //先把远程服务器github上面的文件拉下来2、再输入$ git push origin master3、如果出现报错 fatal: Couldn&#39;t find remote ref master或者fatal: &#39;origin&#39; does not appear to be a git repository以及fatal: Could not read from remote repository.4、则需要重新输入$ git remote add origingit@github.com:djqiang/gitdemo.git使用git在本地创建一个项目的过程$ makdir ~/hello-world    //创建一个项目hello-world$ cd ~/hello-world       //打开这个项目$ git init             //初始化 $ touch README$ git add README        //更新README文件$ git commit -m &#39;first commit&#39;     //提交更新，并注释信息“first commit”$ git remote add origin git@github.com:defnngj/hello-world.git     //连接远程github项目  $ git push -u origin master     //将本地项目更新到github项目上去gitconfig配置文件     Git有一个工具被称为git config，它允许你获得和设置配置变量；这些变量可以控制Git的外观和操作的各个方面。这些变量可以被存储在三个不同的位置：      1./etc/gitconfig 文件：包含了适用于系统所有用户和所有库的值。如果你传递参数选项’--system’ 给 git config，它将明确的读和写这个文件。      2.~/.gitconfig 文件 ：具体到你的用户。你可以通过传递--global 选项使Git 读或写这个特定的文件。     3.位于git目录的config文件 (也就是 .git/config) ：无论你当前在用的库是什么，特定指向该单一的库。每个级别重写前一个级别的值。因此，在.git/config中的值覆盖了在/etc/gitconfig中的同一个值。    在Windows系统中，Git在$HOME目录中查找.gitconfig文件（对大多数人来说，位于C:\Documents and Settings\$USER下）。它也会查找/etc/gitconfig，尽管它是相对于Msys 根目录的。这可能是你在Windows中运行安装程序时决定安装Git的任何地方。    配置相关信息：    2.1　当你安装Git后首先要做的事情是设置你的用户名称和e-mail地址。这是非常重要的，因为每次Git提交都会使用该信息。它被永远的嵌入到了你的提交中：</code></pre><p>　　$ git config –global user.name “John Doe”</p><p>　　$ git config –global user.email <a href="mailto:johndoe@example.com" target="_blank" rel="noopener">johndoe@example.com</a></p><pre><code>   2.2    你的编辑器(Your Editor)</code></pre><p>　　现在，你的标识已经设置，你可以配置你的缺省文本编辑器，Git在需要你输入一些消息时会使用该文本编辑器。缺省情况下，Git使用你的系统的缺省编辑器，这通常可能是vi 或者 vim。如果你想使用一个不同的文本编辑器，例如Emacs，你可以做如下操作：</p><p>　　$ git config –global core.editor emacs</p><pre><code>  2.3 检查你的设置(Checking Your Settings)</code></pre><p>　　如果你想检查你的设置，你可以使用 git config –list 命令来列出Git可以在该处找到的所有的设置:</p><p>　　$ git config –list</p><pre><code>  你也可以查看Git认为的一个特定的关键字目前的值，使用如下命令 git config {key}:</code></pre><p>　　$ git config user.name</p><pre><code>  2.4 获取帮助(Getting help)</code></pre><p>　　如果当你在使用Git时需要帮助，有三种方法可以获得任何git命令的手册页(manpage)帮助信息:</p><p>　　$ git help <verb></verb></p><p>　　$ git <verb> –help</verb></p><p>　　$ man git-<verb></verb></p><p>　　例如，你可以运行如下命令获取对config命令的手册页帮助:</p><p>　　$ git help config</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一.各种命令介绍：　&lt;br&gt;git pull：从其他的版本库(既可以是远程的也可以是本地的)将代码更新到本地，例如：’git pull origin master’就是将origin这个版本库的代码更新到本地的master主枝，该功能类似于SVN的update&lt;/p&gt;
+&lt;p
+      
+    
+    </summary>
+    
+      <category term="git" scheme="https://genleak.com/categories/git/"/>
+    
+    
+      <category term="git" scheme="https://genleak.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>kali安装Nessus</title>
+    <link href="https://genleak.com/2018/11/07/Nessus-install/"/>
+    <id>https://genleak.com/2018/11/07/Nessus-install/</id>
+    <published>2018-11-07T12:20:00.000Z</published>
+    <updated>2019-04-13T07:35:08.904Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>kali linux</p><h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><h3 id="下载-Nessus"><a href="#下载-Nessus" class="headerlink" title="下载 Nessus"></a>下载 Nessus</h3><p>在官方网站下载对应的 Nessus 版本：<a href="http://www.tenable.com/products/nessus/select-your-operating-system" target="_blank" rel="noopener">http://www.tenable.com/products/nessus/select-your-operating-system</a></p><p>这里选择自己系统的版本安装包就行</p><h2 id="安装-Nessus"><a href="#安装-Nessus" class="headerlink" title="安装 Nessus"></a>安装 Nessus</h2><p>下载得到的是 deb 文件，与普通 deb 文件安装方法类似，执行</p><pre><code>dpkg -i Nessus-6.10.5-debian6_amd64.deb</code></pre><p>接下来进行启动和登陆 web 界面。<br>根据提示执行以下命令启动 nessus</p><pre><code>/etc/init.d/nessusd start</code></pre><p>启动后可以查看nessus 启动状态</p><pre><code>netstat -ntpl | grep nessus</code></pre><p>同样即为成功</p><p>获取激活码<br>打开网站：<a href="http://www.tenable.com/products/nessus/nessus-plugins/obtain-an-activation-code" target="_blank" rel="noopener">http://www.tenable.com/products/nessus/nessus-plugins/obtain-an-activation-code</a></p><p>点击“Nessus Home”版本下面的“Register Now”</p><p>然后填写姓名和邮箱，姓名随意，邮箱最好翻墙用谷歌邮箱</p><p>因为登陆 web 界面需要输入 nessus 激活码，为了不打断中间的安装过程，我们提前获取激活码以便使用。</p><p>登陆 web 界面<br>按照之前提示信息打开网页：<a href="https://guet:8834/" target="_blank" rel="noopener">https://guet:8834/</a><br>或者直接访问本地，浏览器中启动软件。Nessus采用的B/S架构，在浏览器中输入<a href="https://127.0.0.1:端口号" target="_blank" rel="noopener">https://127.0.0.1:端口号</a> 即可打开Nessus主页，启动之后需要设置管理帐号和密码，设置完之后需要输入Active code（激活码）才可以进行插件的更新安装，Active code获取方法如下：访问 <a href="http://www.tenable.com/products/nessus/nessus-homefeed" target="_blank" rel="noopener">http://www.tenable.com/products/nessus/nessus-homefeed</a> 进行注册，填写正确邮箱，注册完成会收到邮件，邮件中就有Active code。输入Active code之后就可以开始下载安装插件了</p><p>打开网站：<a href="http://www.tenable.com/products/nessus/nessus-plugins/obtain-an-activation-code" target="_blank" rel="noopener">http://www.tenable.com/products/nessus/nessus-plugins/obtain-an-activation-code</a></p><p>创建登录用户按个人喜好填写</p><p>然后填写邮箱收到的激活码</p><p>之后会开始下载。。。。不过。。。你以为到这里就完了么。。。一般到这里就gg了，最大的难点也就是这里了，不过参照网文也倒总结出来了</p><p>Nessus 下载插件出错的解决方法</p><p>翻了墙就不用这么麻烦了，直接一条命令就OK了</p><pre><code>/opt/nessus/sbin/nessuscli update</code></pre><p>没那个条件的还是乖乖配置吧～～</p><p>个人也比较推荐这个</p><p>这个方法使用离线方式下载插件，然后安装。<br>离线方式需要挑战码和激活码，而且刚才那个激活码因为已经使用过了，所以失效了，可以重新填写信息发送一个新的激活码，好像一小时内只能发送一次激活码，如果告知已经达到限制了，可以换个邮箱也是可以获取激活码的。</p><p>现在生成挑战码，在目录/opt/nessus/sbin下执行</p><pre><code>./nessuscli fetch --challenge</code></pre><p>如上图所示，会得到一个挑战码，保存这个挑战码。打开网页：<a href="https://plugins.nessus.org/v2/offline.php" target="_blank" rel="noopener">https://plugins.nessus.org/v2/offline.php</a></p><p>将挑战码和激活码分别输入相应的位置，然后点击“Submit”</p><p>会跳转到上图的下载页面，点击红框中的两个链接分别下载插件和注册码。<br>这个插件有一百多兆，而且下载可能会比较慢，注册码比较小，下载很快。</p><p>下载好后将两个文件都复制到目录/opt/nessus/sbin/下，然后注册</p><pre><code>./nessuscli fetch --register-offline nessus.license</code></pre><p>接着安装插件</p><pre><code>./nessuscli update all-2.0.tar.gz </code></pre><p>最后重新启动下</p><pre><code>./nessusd</code></pre><p>操作完成了就说明搞定了，再去刷新登录页面填写自己创建的用户名及密码就行了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;实验环境&quot;&gt;&lt;a href=&quot;#实验环境&quot; class=&quot;headerlink&quot; title=&quot;实验环境&quot;&gt;&lt;/a&gt;实验环境&lt;/h2&gt;&lt;p&gt;kali linux&lt;/p&gt;
+&lt;h2 id=&quot;安装过程&quot;&gt;&lt;a href=&quot;#安装过程&quot; class=&quot;headerlink
+      
+    
+    </summary>
+    
+      <category term="web渗透工具" scheme="https://genleak.com/categories/web%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Nessus" scheme="https://genleak.com/tags/Nessus/"/>
+    
+      <category term="web渗透工具" scheme="https://genleak.com/tags/web%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://genleak.com/2018/11/07/hello-world/"/>
+    <id>https://genleak.com/2018/11/07/hello-world/</id>
+    <published>2018-11-07T12:20:00.000Z</published>
+    <updated>2019-04-13T07:35:08.904Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hello World</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Hello World&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>python地址</title>
+    <link href="https://genleak.com/2018/11/07/python-adress/"/>
+    <id>https://genleak.com/2018/11/07/python-adress/</id>
+    <published>2018-11-07T12:20:00.000Z</published>
+    <updated>2019-04-13T07:35:08.904Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" title="python学习地址" target="_blank" rel="noopener">python学习地址</a></p><p>2.<a href="http://www.runoob.com/python3/" target="_blank" rel="noopener">http://www.runoob.com/python3/</a></p><pre><code class="python">class Student(object):    def __init__(self, name, score):        self.name = name        self.score = score    def print_score(self):        print(&#39;%s: %s&#39; % (self.name, self.score))</code></pre><p><img src="https://raw.githubusercontent.com/Constantine-Harris/Constantine-Harris.github.io/hexo/themes/hexo-theme-Claudia/blackman.png" alt="post-cover" title="post-cover"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1.&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000&quot; title=&quot;python学习地址&quot; target=&quot;_blank&quot; rel=&quot;n
+      
+    
+    </summary>
+    
+      <category term="python入门手册" scheme="https://genleak.com/categories/python%E5%85%A5%E9%97%A8%E6%89%8B%E5%86%8C/"/>
+    
+    
+      <category term="python入门手册" scheme="https://genleak.com/tags/python%E5%85%A5%E9%97%A8%E6%89%8B%E5%86%8C/"/>
+    
+      <category term="廖雪峰python" scheme="https://genleak.com/tags/%E5%BB%96%E9%9B%AA%E5%B3%B0python/"/>
+    
+  </entry>
+  
+</feed>

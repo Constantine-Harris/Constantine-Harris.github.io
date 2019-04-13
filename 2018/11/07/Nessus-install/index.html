@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>kali安装Nessus | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="实验环境kali linux 安装过程下载 Nessus在官方网站下载对应的 Nessus 版本：http://www.tenable.com/products/nessus/select-your-operating-system 这里选择自己系统的版本安装包就行 安装 Nessus下载得到的是 deb 文件，与普通 deb 文件安装方法类似，执行 dpkg -i Nessus-6.10.5-d">
+<meta name="keywords" content="Nessus,web渗透工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kali安装Nessus">
+<meta property="og:url" content="https://genleak.com/2018/11/07/Nessus-install/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="实验环境kali linux 安装过程下载 Nessus在官方网站下载对应的 Nessus 版本：http://www.tenable.com/products/nessus/select-your-operating-system 这里选择自己系统的版本安装包就行 安装 Nessus下载得到的是 deb 文件，与普通 deb 文件安装方法类似，执行 dpkg -i Nessus-6.10.5-d">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-13T07:35:08.904Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kali安装Nessus">
+<meta name="twitter:description" content="实验环境kali linux 安装过程下载 Nessus在官方网站下载对应的 Nessus 版本：http://www.tenable.com/products/nessus/select-your-operating-system 这里选择自己系统的版本安装包就行 安装 Nessus下载得到的是 deb 文件，与普通 deb 文件安装方法类似，执行 dpkg -i Nessus-6.10.5-d">
+  
+    <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">Harris</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item" href="/about">
+                About
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item flex-1" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item flex-1" href="/about">
+                About
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>kali安装Nessus</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://raw.githubusercontent.com/Constantine-Harris/Constantine-Harris.github.io/hexo/themes/hexo-theme-Claudia/blackman.png">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> Harris</span>
+                <span class="post-date sub-title">at: 2018-11-07</span>
+            </div>
+            
+                <div>
+                    
+                         <a class="tag is-post-tag" href="/tags/Nessus/">Nessus</a>
+                    
+                         <a class="tag is-post-tag" href="/tags/web渗透工具/">web渗透工具</a>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>kali linux</p>
+<h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><h3 id="下载-Nessus"><a href="#下载-Nessus" class="headerlink" title="下载 Nessus"></a>下载 Nessus</h3><p>在官方网站下载对应的 Nessus 版本：<a href="http://www.tenable.com/products/nessus/select-your-operating-system" target="_blank" rel="noopener">http://www.tenable.com/products/nessus/select-your-operating-system</a></p>
+<p>这里选择自己系统的版本安装包就行</p>
+<h2 id="安装-Nessus"><a href="#安装-Nessus" class="headerlink" title="安装 Nessus"></a>安装 Nessus</h2><p>下载得到的是 deb 文件，与普通 deb 文件安装方法类似，执行</p>
+<pre><code>dpkg -i Nessus-6.10.5-debian6_amd64.deb
+</code></pre><p>接下来进行启动和登陆 web 界面。<br>根据提示执行以下命令启动 nessus</p>
+<pre><code>/etc/init.d/nessusd start
+</code></pre><p>启动后可以查看nessus 启动状态</p>
+<pre><code>netstat -ntpl | grep nessus
+
+</code></pre><p>同样即为成功</p>
+<p>获取激活码<br>打开网站：<a href="http://www.tenable.com/products/nessus/nessus-plugins/obtain-an-activation-code" target="_blank" rel="noopener">http://www.tenable.com/products/nessus/nessus-plugins/obtain-an-activation-code</a></p>
+<p>点击“Nessus Home”版本下面的“Register Now”</p>
+<p>然后填写姓名和邮箱，姓名随意，邮箱最好翻墙用谷歌邮箱</p>
+<p>因为登陆 web 界面需要输入 nessus 激活码，为了不打断中间的安装过程，我们提前获取激活码以便使用。</p>
+<p>登陆 web 界面<br>按照之前提示信息打开网页：<a href="https://guet:8834/" target="_blank" rel="noopener">https://guet:8834/</a><br>或者直接访问本地，浏览器中启动软件。Nessus采用的B/S架构，在浏览器中输入<a href="https://127.0.0.1:端口号" target="_blank" rel="noopener">https://127.0.0.1:端口号</a> 即可打开Nessus主页，启动之后需要设置管理帐号和密码，设置完之后需要输入Active code（激活码）才可以进行插件的更新安装，Active code获取方法如下：访问 <a href="http://www.tenable.com/products/nessus/nessus-homefeed" target="_blank" rel="noopener">http://www.tenable.com/products/nessus/nessus-homefeed</a> 进行注册，填写正确邮箱，注册完成会收到邮件，邮件中就有Active code。输入Active code之后就可以开始下载安装插件了</p>
+<p>打开网站：<a href="http://www.tenable.com/products/nessus/nessus-plugins/obtain-an-activation-code" target="_blank" rel="noopener">http://www.tenable.com/products/nessus/nessus-plugins/obtain-an-activation-code</a></p>
+<p>创建登录用户按个人喜好填写</p>
+<p>然后填写邮箱收到的激活码</p>
+<p>之后会开始下载。。。。不过。。。你以为到这里就完了么。。。一般到这里就gg了，最大的难点也就是这里了，不过参照网文也倒总结出来了</p>
+<p>Nessus 下载插件出错的解决方法</p>
+<p>翻了墙就不用这么麻烦了，直接一条命令就OK了</p>
+<pre><code>/opt/nessus/sbin/nessuscli update
+</code></pre><p>没那个条件的还是乖乖配置吧～～</p>
+<p>个人也比较推荐这个</p>
+<p>这个方法使用离线方式下载插件，然后安装。<br>离线方式需要挑战码和激活码，而且刚才那个激活码因为已经使用过了，所以失效了，可以重新填写信息发送一个新的激活码，好像一小时内只能发送一次激活码，如果告知已经达到限制了，可以换个邮箱也是可以获取激活码的。</p>
+<p>现在生成挑战码，在目录/opt/nessus/sbin下执行</p>
+<pre><code>./nessuscli fetch --challenge
+</code></pre><p>如上图所示，会得到一个挑战码，保存这个挑战码。打开网页：<a href="https://plugins.nessus.org/v2/offline.php" target="_blank" rel="noopener">https://plugins.nessus.org/v2/offline.php</a></p>
+<p>将挑战码和激活码分别输入相应的位置，然后点击“Submit”</p>
+<p>会跳转到上图的下载页面，点击红框中的两个链接分别下载插件和注册码。<br>这个插件有一百多兆，而且下载可能会比较慢，注册码比较小，下载很快。</p>
+<p>下载好后将两个文件都复制到目录/opt/nessus/sbin/下，然后注册</p>
+<pre><code>./nessuscli fetch --register-offline nessus.license
+</code></pre><p>接着安装插件</p>
+<pre><code>./nessuscli update all-2.0.tar.gz 
+</code></pre><p>最后重新启动下</p>
+<pre><code>./nessusd
+</code></pre><p>操作完成了就说明搞定了，再去刷新登录页面填写自己创建的用户名及密码就行了</p>
+
+        </div>
+        <div class="post-reply">
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+
+<!-- for code block highlight --> 
+<!-- theme.block_highlight -->
+<!-- we do not guarantee the char sequences spell right, usr himself do it -->
+<link rel="stylesheet" href="/css/highlight_rainbow.css">
+<script src="/js/highlight.min.js"></script>
+<script type="text/javascript"> hljs.initHighlightingOnLoad();</script>
+
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright ©  2019
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>

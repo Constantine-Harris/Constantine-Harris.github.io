@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>python学习笔记 | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="python数据类型之间的转换对python内置的数据类型进行转换时，可以使用内置函数，常用的类型转换函数如下 python常用类型转换函数 函数格式    使用示例    描述 int(x [,base])    int(&amp;quot;8&amp;quot;)      可以转换的包括String类型和其他数字类型，但是会丢失精度       float(x)     float(1)或者float(&amp;q">
+<meta name="keywords" content="python入门,强制类型转换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python学习笔记">
+<meta property="og:url" content="https://genleak.com/2018/11/16/pylxzh/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="python数据类型之间的转换对python内置的数据类型进行转换时，可以使用内置函数，常用的类型转换函数如下 python常用类型转换函数 函数格式    使用示例    描述 int(x [,base])    int(&amp;quot;8&amp;quot;)      可以转换的包括String类型和其他数字类型，但是会丢失精度       float(x)     float(1)或者float(&amp;q">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-13T07:35:08.904Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python学习笔记">
+<meta name="twitter:description" content="python数据类型之间的转换对python内置的数据类型进行转换时，可以使用内置函数，常用的类型转换函数如下 python常用类型转换函数 函数格式    使用示例    描述 int(x [,base])    int(&amp;quot;8&amp;quot;)      可以转换的包括String类型和其他数字类型，但是会丢失精度       float(x)     float(1)或者float(&amp;q">
+  
+    <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">Harris</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item" href="/about">
+                About
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item flex-1" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item flex-1" href="/about">
+                About
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>python学习笔记</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://raw.githubusercontent.com/Constantine-Harris/Constantine-Harris.github.io/hexo/themes/hexo-theme-Claudia/blackman.png">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> Harris</span>
+                <span class="post-date sub-title">at: 2018-11-16</span>
+            </div>
+            
+                <div>
+                    
+                         <a class="tag is-post-tag" href="/tags/python入门/">python入门</a>
+                    
+                         <a class="tag is-post-tag" href="/tags/强制类型转换/">强制类型转换</a>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <p>python数据类型之间的转换<br>对python内置的数据类型进行转换时，可以使用内置函数，常用的类型转换函数如下</p>
+<pre><code class="python">python常用类型转换函数
+函数格式    使用示例    描述
+int(x [,base])    int(&quot;8&quot;)      可以转换的包括String类型和其他数字类型，但是会丢失精度      
+float(x)     float(1)或者float(&quot;1&quot;)     可以转换String和其他数字类型，不足的位数用0补齐，例如1会变成1.0
+ complex(real ,imag)     complex(&quot;1&quot;)或者complex(1,2)     第一个参数可以是String或者数字，第二个参数只能为数字类型，第二个参数没有时默认为0
+ str(x)     str(1)     将数字转化为String
+ repr(x)     repr(Object)     返回一个对象的String格式
+ eval(str)     eval(&quot;12+23&quot;)     执行一个字符串表达式，返回计算的结果,如例子中返回35
+ tuple(seq)     tuple((1,2,3,4))     参数可以是元组、列表或者字典，wie字典时，返回字典的key组成的集合
+ list(s)     list((1,2,3,4))     将序列转变成一个列表，参数可为元组、字典、列表，为字典时，返回字典的key组成的集合
+ set(s)     set([&#39;b&#39;, &#39;r&#39;, &#39;u&#39;, &#39;o&#39;, &#39;n&#39;])或者set(&quot;asdfg&quot;)     将一个可以迭代对象转变为可变集合，并且去重复，返回结果可以用来计算差集x - y、并集x | y、交集x &amp; y
+ frozenset(s)     frozenset([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])     将一个可迭代对象转变成不可变集合，参数为元组、字典、列表等，
+ chr(x)     chr(0x30)     chr()用一个范围在 range（256）内的（就是0～255）整数作参数，返回一个对应的字符。返回值是当前整数对应的ascii字符。
+ ord(x)     ord(&#39;a&#39;)     返回对应的 ASCII 数值，或者 Unicode 数值
+ hex(x)     hex(12)     把一个整数转换为十六进制字符串
+ oct(x)     oct(12)     把一个整数转换为八进制字符串
+</code></pre>
+
+        </div>
+        <div class="post-reply">
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+
+<!-- for code block highlight --> 
+<!-- theme.block_highlight -->
+<!-- we do not guarantee the char sequences spell right, usr himself do it -->
+<link rel="stylesheet" href="/css/highlight_rainbow.css">
+<script src="/js/highlight.min.js"></script>
+<script type="text/javascript"> hljs.initHighlightingOnLoad();</script>
+
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright ©  2019
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>

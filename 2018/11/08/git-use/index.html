@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>git使用 | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="git使用（怕遗忘）先输入账号和邮箱： git config --global user.name &amp;quot;用户名&amp;quot; git config --global user.email &amp;quot;邮箱&amp;quot; git 同步master git clone xxxxxx.git git 同步分支 git clone xxxxxx.git - b 分支名 上传的话输入命令 cd 文件夹地">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git使用">
+<meta property="og:url" content="https://genleak.com/2018/11/08/git-use/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="git使用（怕遗忘）先输入账号和邮箱： git config --global user.name &amp;quot;用户名&amp;quot; git config --global user.email &amp;quot;邮箱&amp;quot; git 同步master git clone xxxxxx.git git 同步分支 git clone xxxxxx.git - b 分支名 上传的话输入命令 cd 文件夹地">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-13T07:35:08.904Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git使用">
+<meta name="twitter:description" content="git使用（怕遗忘）先输入账号和邮箱： git config --global user.name &amp;quot;用户名&amp;quot; git config --global user.email &amp;quot;邮箱&amp;quot; git 同步master git clone xxxxxx.git git 同步分支 git clone xxxxxx.git - b 分支名 上传的话输入命令 cd 文件夹地">
+  
+    <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">Harris</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item" href="/about">
+                About
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item flex-1" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item flex-1" href="/about">
+                About
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>git使用</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://raw.githubusercontent.com/Constantine-Harris/Constantine-Harris.github.io/hexo/themes/hexo-theme-Claudia/blackman.png">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> Harris</span>
+                <span class="post-date sub-title">at: 2018-11-08</span>
+            </div>
+            
+                <div>
+                    
+                         <a class="tag is-post-tag" href="/tags/git/">git</a>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <h1 id="git使用（怕遗忘）"><a href="#git使用（怕遗忘）" class="headerlink" title="git使用（怕遗忘）"></a>git使用（怕遗忘）</h1><p>先输入账号和邮箱：</p>
+<pre><code>git config --global user.name &quot;用户名&quot;
+</code></pre><pre><code>git config --global user.email &quot;邮箱&quot;
+</code></pre><p>git 同步master</p>
+<pre><code>git clone xxxxxx.git
+</code></pre><p>git 同步分支</p>
+<pre><code>git clone xxxxxx.git - b 分支名
+</code></pre><p>上传的话<br>输入命令 cd 文件夹地址，进入文件夹</p>
+<pre><code>git init
+</code></pre><p>上传所有文件的话：</p>
+<pre><code>git add .
+</code></pre><p>上传提交信息</p>
+<pre><code>git commit  -m  &quot;提交信息&quot;
+</code></pre><p>将本地的库链接到仓库</p>
+<pre><code>git remote add origin xxxxx.git
+</code></pre><p>失败的话</p>
+<pre><code>git remote rm origin
+</code></pre><p>push</p>
+<pre><code>git push
+</code></pre><p>Step1、查看代码的修改状态</p>
+<p>打开git shell(环境：以windows为例，安装好Github的客户端并配置好账户信息)， 默认是在git的工作空间路径，ls命令可以查看workspace下的所有目录（建议：workspace下的目录应以项目为单位）, cd命令进入目标工程。</p>
+<pre><code>git status
+</code></pre><p>红色或绿色部分字体是工程内的发生修改的状态标识:</p>
+<p>modified 代表文件和上一版本相比，有过修改</p>
+<p>new  file  代表文件是新增加的</p>
+<p>deleted   代表文件被删除了，提交成功后，文件将从repository中删除</p>
+<p>untracked file 一般都是新增加的文件夹</p>
+<p>Step2、查看代码的修改内容</p>
+<pre><code>git diff &lt;filename&gt; 
+</code></pre><p>这里查看的是.gitignore文件的修改变化。<br>查看历史修改，需要用到节点hashcode（hashcode可以从github上commit记录上获得）:</p>
+<pre><code>git diff &lt;hascode&gt; &lt;hashcode&gt; &lt;filename&gt;
+</code></pre><p>Step3、暂存需要提交的代码</p>
+<p>增加一个需要上传的文件：</p>
+<pre><code>git add &lt;filename&gt;
+</code></pre><p>删除一个不需要的文件：</p>
+<pre><code>git rm &lt;filename&gt;
+</code></pre><p>增加全部需要上传的文件：</p>
+<pre><code>git add --all
+</code></pre><p>Step4、提交已暂存的文件</p>
+<p>我们现在推荐不加-m的方式</p>
+<pre><code>git commit
+</code></pre><p>执行后会弹出编辑框，一行标题，另起一行，写上详细注释。这就符合git的上传规范了。</p>
+<p>不推荐大家直接-m提交注释，因为只能写个标题。</p>
+<pre><code>git commit -m &lt;comment&gt;
+</code></pre><p>如果发现有文件漏提或注释有误，使用amend修正：</p>
+<pre><code>git commit --amend
+</code></pre><p>注意：使用commit命令只是将修改提交到本地仓库<br>Step5、同步到服务器</p>
+<p>使用push命令形象的将修改push到github的代码服务器，so you can access the code anywhere.</p>
+<pre><code>git push -u origin master
+</code></pre><p>同步到服务器前先需要将服务器代码同步到本地<br>命令：</p>
+<pre><code>git pull
+</code></pre><p>如果执行失败，就按照提示还原有冲突的文件，然后再次尝试同步。<br>命令：<br><code>`</code>git checkout – &lt;有冲突的文件路径&gt;</p>
+<pre><code>
+同步到服务器
+命令：
+```git push origin  &lt;本地分支名&gt;
+</code></pre><p>如果执行失败，一般是没有将服务器代码同步到本地导致的，先执行上面的git pull命令。</p>
+
+        </div>
+        <div class="post-reply">
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+
+<!-- for code block highlight --> 
+<!-- theme.block_highlight -->
+<!-- we do not guarantee the char sequences spell right, usr himself do it -->
+<link rel="stylesheet" href="/css/highlight_rainbow.css">
+<script src="/js/highlight.min.js"></script>
+<script type="text/javascript"> hljs.initHighlightingOnLoad();</script>
+
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright ©  2019
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
